@@ -1,10 +1,10 @@
 ## Guía elaborar punto sobre Tecnologías usadas
 
-## 8. Tecnologías de Desarrollo
+## 7. Tecnologías de Desarrollo
 
 En esta sección, se detallarán las tecnologías fundamentales que conforman el "corazón" de tu aplicación. Para cada tecnología, deberás describir brevemente qué es, cómo la utilizaste en tu proyecto, y por qué fue una elección adecuada.
 
-### 8.1. Lenguaje de Programación
+### 7.1. Lenguaje de Programación
 
  - **PHP (Versión 8.x)**
     * **Descripción:** ¿Qué es PHP y por qué es un lenguaje idóneo para el desarrollo web?
@@ -63,7 +63,7 @@ En esta sección, se detallarán las tecnologías fundamentales que conforman el
 
 ---
 
-### 8.2. Infraestructura y Herramientas de Desarrollo
+### 7.2. Infraestructura y Herramientas de Desarrollo
 
 Esta sección se centrará en las herramientas que proporcionaron el entorno de trabajo para el desarrollo de tu proyecto.
 
@@ -85,7 +85,7 @@ Esta sección se centrará en las herramientas que proporcionaron el entorno de 
 
 ---
 
-### 8.3. Conclusiones y Reflexión
+### 7.3. Conclusiones y Reflexión
 
 * **Impacto de las tecnologías:** Reflexiona sobre cómo la elección y el uso de estas tecnologías impactaron en el desarrollo de tu proyecto (eficiencia, rendimiento, mantenibilidad, etc.).
 
