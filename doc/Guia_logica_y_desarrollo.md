@@ -22,6 +22,59 @@ Laravel 11, como framework PHP, proporciona una estructura y un conjunto de herr
     - `/albums` (GET): Muestra la pantalla de todos los albums de la aplicación.
     - `resto de rutas`: ...
 
+
+    El resto de rutas son las siguientes y su vinculación con los controladores correspodientes:
+
+```mermaid
+flowchart LR
+    subgraph "Public Access"
+        A[GET /] --> A1(DashboardController)
+        B[GET /albums] --> B1(AlbumController)
+        B2[GET /albums/search] --> B3(AlbumController)
+        B4[GET /albums/id] --> B5(AlbumController::show)
+        B6[POST /albums] --> B7(AlbumController::store)
+        C[GET /artists] --> C1(ArtistController::index)
+        C2[GET /artists/search] --> C3(ArtistController::search)
+        C4[GET /artists/id] --> C5(ArtistController::show)
+        C6[POST /artists] --> C7(ArtistController::store)
+        D[GET /shows] --> D1(ShowController::index)
+        D2[GET /shows/id] --> D3(ShowController::show)
+        D4[POST /shows] --> D5(ShowController::store)
+        E[POST /tracks/id] --> E1(TrackController::play)
+    end
+
+    subgraph "Auth"
+        F1[GET /register] --> F2(RegisteredUserController::create)
+        F3[POST /register] --> F4(RegisteredUserController::store)
+        G1[GET /login] --> G2(SessionController::create)
+        G3[POST /login] --> G4(SessionController::store)
+        H1[GET /settings] --> H2(SessionController::create)
+    end
+
+    subgraph "Authenticated Access"
+        I1[DELETE /logout] --> I2(SessionController::destroy)
+
+        subgraph "Spotify Integration"
+            J1[GET /spotify/search] --> J2(SpotifyController::search)
+            J3[GET /spotify] --> J4(SpotifyController::create)
+            J5[GET /spotify/album/id] --> J6(SpotifyController::showAlbum)
+            J7[GET /spotify/artist/id] --> J8(SpotifyController::showArtist)
+            J9[GET /spotify/show/id] --> J10(SpotifyController::showPodcast)
+        end
+
+        subgraph "User Settings"
+            L1[GET /settings] --> L2(settings/profile)
+            L3[GET settings/profile] --> L4(Profile::class)
+            L5[GET settings/password] --> L6(Password::class)
+            L7[GET settings/appearance] --> L8(Appearance::class)
+        end
+
+        K1[GET /catalog] --> K2(CatalogController::index)
+
+      
+    end
+```
+
 * **Middleware:** Son "capas" de código que se ejecutan antes o después de que una petición llegue a tu controlador. Se utilizan para filtrar peticiones HTTP, manejar la autenticación, la verificación de CORS, o la aplicación de reglas de seguridad. En tu proyecto, se han utilizado middlewares para asegurar que solo los usuarios autenticados o con roles específicos (como administradores) puedan acceder a ciertas rutas, garantizando la seguridad y la coherencia del sistema.
 
 
