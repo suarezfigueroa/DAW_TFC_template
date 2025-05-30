@@ -1,4 +1,4 @@
-    ## Guía para el Despliegue de Aplicaciones Laravel con Docker Compose
+## Guía para el Despliegue de Aplicaciones Laravel con Docker Compose
 
 El despliegue de una aplicación es el paso final que la hace accesible a los usuarios. Utilizar **Docker** y **Docker Compose** simplifica enormemente este proceso, garantizando que tu aplicación y sus dependencias (como la base de datos) se ejecuten de manera consistente en cualquier entorno, ya sea en tu máquina local o en un servidor remoto.
 
