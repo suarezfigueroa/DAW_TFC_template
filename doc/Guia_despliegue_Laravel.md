@@ -70,7 +70,7 @@ La imagen de la aplicación está subida a docker-hub y disponible publicamente 
     ```
 
 
-### Escenario 1: Despliegue Local con Docker (construir imagen)
+### Escenario 2: Despliegue Local con Docker (construir imagen)
 
 Este proceso te permitirá levantar tu aplicación en tu propia máquina utilizando Docker. Lo haremos en modo interactivo para que puedas ver los logs y, crucialmente, ejecutar comandos dentro del contenedor de la aplicación para realizar las migraciones de la base de datos.
 En este escenario, la imagen se construye a la vez que se levantana el escenario (solo la 1ª vez) o si se indica en el comando.
@@ -258,7 +258,7 @@ En este escenario, la imagen se construye a la vez que se levantana el escenario
 
 ---
 
-### Escenario 2: Despliegue Remoto en un Servidor Linux (Digital Ocean)
+### Escenario 3: Despliegue Remoto en un Servidor Linux (Digital Ocean)
 
 El despliegue en un servidor remoto implica mover tu código y tus configuraciones de Docker a la nube y levantar los servicios allí. Digital Ocean es una excelente opción por su simplicidad.
 
