@@ -1,12 +1,79 @@
-## Guía para el Despliegue de Aplicaciones Laravel con Docker Compose
+    ## Guía para el Despliegue de Aplicaciones Laravel con Docker Compose
 
 El despliegue de una aplicación es el paso final que la hace accesible a los usuarios. Utilizar **Docker** y **Docker Compose** simplifica enormemente este proceso, garantizando que tu aplicación y sus dependencias (como la base de datos) se ejecuten de manera consistente en cualquier entorno, ya sea en tu máquina local o en un servidor remoto.
 
 Esta documentación mostrará dos escenarios de despliegue comunes utilizando tu configuración de `docker-compose.yml` y `dockerfile`.
 
-### Escenario 1: Despliegue Local con Docker
+### Escenario 1: Despliegue Local Docker con imagen desde Docker-Hub
+
+Este proceso permitirá levantar la aplicación en un entorno local, sin dependencias externas y con docker, lo que es completamente limpio y sin quedar ningún rastro de artefactos y ficheros una vez finalizado.
+La imagen de la aplicación está subida a docker-hub y disponible publicamente para su uso y descarga.
+
+**Prerrequisitos:**
+
+* **Docker Desktop (o Docker Engine y Docker Compose CLI)** instalado en local.
+
+**Pasos:**
+
+1.  **Clona el repositorio**
+
+    Este paso es importante porque se necesita acceder a la carpeta `despligue-docker` que está contenida dentro del repositorio.
+
+    ```bash
+    git clone {url-repositorio}
+    cd /mi-proyecto/despligue-docker
+    ```
+
+2.  **Ejecutar escenario**
+
+    En la carpeta `despligue-docker` existen 2 ficheros, `docker-compose.ym` y `.env.production.
+
+    - `docker-compose.yml`: Contiene la información del escenario de despliegue con cada uno de los servicios.
+    - `.env`: Controla la información de configuración, siendo posible cambiar cualquier opción de configuración si fuera necesario.
+
+    Pasos:
+
+    Levantar el escenario.
+    
+    ```bash
+    docker compose up
+    ``` 
+
+    Aplicar las migraciones de la BD:
+     
+    ```bash
+    docker compose exec app php artisan migrate
+    ```
+    **Importante:** Si tus migraciones necesitan datos iniciales (seeders), puedes ejecutarlos después de las migraciones:
+
+    ```bash
+    docker compose exec app php artisan db:seed
+    ```
+
+3. **Cargar script de datos iniciales**
+
+    (Si fuera necesario cargar datos iniciales)
+
+    Para cargar los datos iniciales contenidos en el script, se requiere conectar a través de `phpadmin`, `http://localhost:8888`, y acceder a la base de datos y a través de la pestaña `SQL` ejecutar el script.
+
+4.  **Acceder a al aplicacición:**
+
+    Para acceder a la aplicación, simplemente desde el navegador `http://localhost:9000`.
+
+
+5.  **Eliminar datos:**
+
+    Para eliminar el escenario de despliegue completamente, y borrar los contenedores y los datos de la base de datos, ejecutar el comando:
+
+    ```bash
+    docker compose down -v
+    ```
+
+
+### Escenario 1: Despliegue Local con Docker (construir imagen)
 
 Este proceso te permitirá levantar tu aplicación en tu propia máquina utilizando Docker. Lo haremos en modo interactivo para que puedas ver los logs y, crucialmente, ejecutar comandos dentro del contenedor de la aplicación para realizar las migraciones de la base de datos.
+En este escenario, la imagen se construye a la vez que se levantana el escenario (solo la 1ª vez) o si se indica en el comando.
 
 **Prerrequisitos:**
 
